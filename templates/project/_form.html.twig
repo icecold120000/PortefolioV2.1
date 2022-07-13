@@ -1,0 +1,142 @@
+{{ form_start(form) }}
+    <div id="part1" class="container-fluid">
+        {{form_label(form.nomProjet)}}
+        <div id="divInput">
+            {{form_widget(form.nomProjet)}}
+        </div>
+        {% if form_errors(form.nomProjet) %}
+            <div class="erreur">
+                {{form_errors(form.nomProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.dateDebut)}}
+        <div id="divInput">
+            {{form_widget(form.dateDebut)}}
+        </div>
+        {% if form_errors(form.dateDebut)%}
+            <div class="erreur">
+                {{form_errors(form.dateDebut)}}
+            </div>
+        {% endif %}
+        {{form_label(form.dateFin)}}
+        <div id="divInput">
+            {{form_widget(form.dateFin)}}
+        </div>
+        {% if form_errors(form.dateFin)%}
+            <div class="erreur">
+                {{form_errors(form.dateFin)}}
+            </div>
+        {% endif %}
+        {{form_label(form.lienProjet)}}
+        <div id="divInput">
+            {{form_widget(form.lienProjet)}}
+        </div>
+        {% if form_errors(form.lienProjet)%}
+            <div class="erreur">
+                {{form_errors(form.lienProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.descripProjet)}}
+        <div id="divInput">
+            {{form_widget(form.descripProjet)}}
+        </div>
+        {% if form_errors(form.descripProjet)%}
+            <div class="erreur">
+                {{form_errors(form.descripProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.technologie)}}
+        <div id="divInput">
+            {{form_widget(form.technologie)}}
+        </div>
+        {% if form_errors(form.descripProjet)%}
+            <div class="erreur">
+                {{form_errors(form.descripProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.veille)}}
+        <div id="divInput">
+            {{form_widget(form.veille)}}
+        </div>
+        {% if form_errors(form.descripProjet)%}
+            <div class="erreur">
+                {{form_errors(form.descripProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.missionRealise)}}
+        <div id="divInput">
+            {{form_widget(form.missionRealise)}}
+        </div>
+        {% if form_errors(form.descripProjet)%}
+            <div class="erreur">
+                {{form_errors(form.descripProjet)}}
+            </div>
+        {% endif %}
+    </div>
+    <div id="part2" class="container-fluid">
+        {{form_label(form.contexte)}}
+        <div id="divInput">
+            {{form_widget(form.contexte)}}
+        </div>
+        {% if form_errors(form.descripProjet)%}
+            <div class="erreur">
+                {{form_errors(form.descripProjet)}}
+            </div>
+        {% endif %}
+        {{form_label(form.participant)}}
+        <div id="divInput">
+            {{form_widget(form.participant)}}
+        </div>
+        {% if form_errors(form.participant)%}
+            <div class="erreur">
+                {{form_errors(form.participant)}}
+            </div>
+        {% endif %}
+        {{form_label(form.outil)}}
+        <div id="divInput">
+            {{form_widget(form.outil)}}
+        </div>
+        {% if form_errors(form.outil)%}
+            <div class="erreur">
+                {{form_errors(form.outil)}}
+            </div>
+        {% endif %}
+        {{form_label(form.encadrant)}}
+        <div id="divInput">
+            {{form_widget(form.encadrant)}}
+        </div>
+        {% if form_errors(form.encadrant)%}
+            <div class="erreur">
+                {{form_errors(form.encadrant)}}
+            </div>
+        {% endif %}
+        {{form_label(form.cdc)}}
+        <div id="divInput">
+            {{form_widget(form.cdc)}}
+        </div>
+        {% if form_errors(form.cdc)%}
+            <div class="erreur">
+                {{form_errors(form.cdc)}}
+            </div>
+        {% endif %}
+        {{form_label(form.doc)}}
+        <div id="divInput">
+            {{form_widget(form.doc)}}
+        </div>
+        {% if form_errors(form.doc)%}
+            <div class="erreur">
+                {{form_errors(form.doc)}}
+            </div>
+        {% endif %}
+        {{form_label(form.vig)}}
+        <div id="divInput">
+            {{form_widget(form.vig)}}
+        </div>
+        {% if form_errors(form.vig)%}
+            <div class="erreur">
+                {{form_errors(form.vig)}}
+            </div>
+        {% endif %}
+    </div>
+{{ form_end(form) }}
+

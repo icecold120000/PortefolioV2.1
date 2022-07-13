@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un nouveau projet{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>Ajouter un nouveau projet</h1>
+        <div id="formProjet">
+            {{ include('project/_form.html.twig')}}
+        </div>
+        <div id="divAjout">
+            <button type="submit" class="btn btn-success" form="projetForm">
+                Enregistrer le projet
+            </button>
+            <a href="{{ path('projet_index') }}">
+                <button class="btn btn-secondary" id="btnRetour">
+                    Revenir dans la liste
+                </button>
+            </a>
+        </div>
+    </main>
+{% endblock %}

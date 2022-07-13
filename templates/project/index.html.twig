@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de Projet{% endblock %}
+
+{% block body %}
+<h1>Liste de projet</h1>
+    <main>
+        <div>
+            {{ knp_pagination_render(projets) }}
+        </div>
+        <section id="propos">
+            <h3>Liste de tous mes projets</h3>
+            <div class="container">
+                <div class="row">
+                    {% for projet in projets %}
+                        <div class="col-lg-4 col-sm-6">
+                            <div class="projet-block">
+                                <p>{{ projet.nomProjet}} </p>
+                                <a href="{{ path('projet_show',{'id' : projet.id}) }}" target="_blank">
+                                    <img src="{{asset('uploads/VigProjet/' ~ projet.vignetteProjet)}}" class="img-thumbnail" alt="Image de projet">
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <div>
+            {{ knp_pagination_render(projets) }}
+        </div>
+    </main>
+{% endblock %}
+

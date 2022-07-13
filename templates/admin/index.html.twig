@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue admin{% endblock %}
+
+{% block body %}
+    <main id="tabProjet">
+        <h1>Liste des projets:</h1>
+        <a href="{{ path('projet_new') }}">
+            <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter un projet</button>
+        </a>
+        <a href="{{ path('imgProjet_index') }}">
+            <button class="btn btn-primary"><i class="fas fa-plus"></i> Galerie d'image de projet</button>
+        </a>
+        <div>
+            <a href="{{ path('contact_index') }}">
+                <button class="btn btn-primary"><i class="fas fa-plus"></i>Voir listes des messages</button>
+            </a>
+            <a href="{{ path('homepage') }}">
+                <button class="btn btn-secondary" id="btnRetour">
+                    Revenir dans la liste
+                </button>
+            </a>
+        </div>
+        <div>
+            {{ knp_pagination_render(projets) }}
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Nom du projet</th>
+                <th scope="col">Description</th>
+                <th scope="col">Lien Projet</th>
+                <th scope="col">Éditer</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for projet in projets %}
+                <tr>
+                    <td>{{ projet.nomProjet }}</td>
+                    <td>{{ projet.descripProjet}}</td>
+                    <td>
+                        <a href="{{ path('projet_show', {'id': projet.id}) }}">
+                            <button class="btn btn-info">Voir Page projet</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('projet_edit', {'id': projet.id}) }}">
+                            <button class="btn btn-primary">
+                                <i class="far fa-edit"></i>
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('projet_delete',
+                            {'id': projet.id}) }}">
+                            <button class="btn btn-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun projet n'a été trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {{ knp_pagination_render(projets) }}
+        </div>
+    </main>
+{% endblock %}

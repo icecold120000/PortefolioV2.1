@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <main>
+        <h1>{{projet.nomProjet}}</h1>
+        <section id="image">
+            <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {% for image in projet.imgProjet %}
+                        <li data-target=".carousel" data-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" {% endif %}></li>
+                    {% endfor %}
+                </ol>
+                <div class="carousel-inner">
+                    {% for image in projet.imgProjet %}
+                        <div class="carousel-item {% if loop.index0 == 0 %} active {% endif %}">
+                            <img class="d-block w-100" src="{{ asset('uploads/ImgProjet/' ~ image.lienProjet) }}" alt="{{ image.lienProjet }}-image-{{ image.id }}" width="400">
+                        </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </section>
+        <section id="textProjet">
+            <ol>
+                <li>
+                    <a href="{{asset('uploads/CDC/' ~ projet.cahierDesCharges)}}" download="{{projet.cahierDesCharges}}">Cahier des charges</a>
+                </li>
+                <li>
+                    <p>Description: {{projet.descripProjet }}</p>
+                </li>
+                <li>
+                    <p>Contexte: {{projet.contexte}}</p>
+                </li>
+                <li>
+                    <p>Mission réalisée: {{projet.missionRealise}}</p>
+                </li>
+                <li>
+                    <p>Période de réalisation : {{ projet.dateDebut ? projet.dateDebut|date('d/m/Y') : '' }}
+                        au {{ projet.dateFin ? projet.dateFin|date('d/m/Y') : '' }}
+                    </p>
+                </li>
+                <li>
+                    <p>Professeur et Professionnel encadrant : {{projet.encadrant}}.</p>
+                </li>
+                <li>
+                    <p>Stacks techniques: {{projet.technologie}}</p>
+                </li>
+                {% if projet.outil %}
+                    <li>
+                        <p>Outil(s) utilisé(s):
+                            {{projet.outil}}
+                        </p>
+                    </li>
+                {% endif %}
+                {% if projet.veille %}
+                    <li>
+                        <p>
+                            Veille: {{projet.veille}}.
+                        </p>
+                    </li>
+                {% endif %}
+                <li>
+                    <p>
+                        Bilan: <a href="{{asset('uploads/Documentation/' ~ projet.documentation)}}" download="{{projet.documentation}}">Documentation</a>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        {% if 'https' in projet.lienProjet %}
+                            <a href="{{asset(projet.lienProjet)}}">Visiter le site</a>
+                        {% else %}
+                            <a href="{{asset('uploads/ProjetFolder/' ~ projet.lienProjet )}}">Visiter le site</a>
+                        {% endif%}
+                    </p>
+                </li>
+            </ol>
+        </section>
+    </main>
+{% endblock %}

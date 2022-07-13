@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImageProjet{% endblock %}
+
+{% block body %}
+    <h1>Suppression d'une image de projet</h1>
+
+    {{ include('imgProject/_delete_form.html.twig') }}
+
+
+    <div>
+        <a href="{{ path('imgProjet_index') }}">
+            <button class="btn btn-secondary" id="btnRetour">
+                Revenir dans la liste
+            </button>
+        </a>
+    </div>
+{% endblock %}

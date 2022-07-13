@@ -1,0 +1,284 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <header>
+        <h1>Quentin Pham Ngoc Lan</h1>
+        <img src="{{asset('/images/Quentin.jpg')}}" id="photoprofil" alt="Photo de profil">
+        <div id="présentation">
+            <a href="{{asset('/images/CV.pdf')}}" download="CV.pdf">
+                <button class="btn btn-danger" id="cv">
+                    Télécharger le CV
+                </button>
+            </a>
+            <h2>Étudiant en Licence à l'Institut Saint Vincent, Senlis.</h2>
+            <h2>Je suis un élève sérieux, attentif.</h2>
+        </div>
+    </header>
+    <main>
+        <section id="realisations">
+            <section id="propos">
+                <h3>Mes Réalisations</h3>
+                <div class="container">
+                    <div class="row">
+                        {% for projet in projets %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="projet-block">
+                                    <p>{{ projet.nomProjet}} </p>
+                                    <a href="{{path('projet_show', {'id': projet.id})}}" target="_blank">
+                                        <img src="{{asset('uploads/VigProjet/' ~ projet.vignetteProjet)}}" class="img-thumbnail" alt="Image de projet">
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+            <div>
+                <a href="{{ path('projet_index') }}" class="btn btn-primary" id="btnRetour">
+                    Voir tous les projets
+                </a>
+            </div>
+        </section>
+        <section id="parcours">
+            <h3>Mon Parcours</h3>
+            <div class="timeline">
+                <div class="container left">
+                    <div class="content">
+                        <h2>Janvier 2022</h2>
+                        <img src="{{asset('/images/Logo/React.png')}}"
+                             class="logo" alt="Logo">
+                        <p>React</p>
+                        <p>Assuré par Hugo Knorr</p>
+                        <p>Lead Développeur et Développeur FullStack</p>
+                        <p>
+                            <a href="{{path('projet_show', {'id': 10})}}">
+                                Visiter Projet
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>Juin 2021</h2>
+                        <img src="{{asset('/images/Logo/Javascript.png')}}"
+                             class="logo" alt="Logo">
+                        <p>Javascript</p>
+                        <p>Assuré par Nicolas Pineau</p>
+                        <p>Développeur Javascript chez Nodevo</p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>Novembre 2020</h2>
+                        <img src="{{asset('/images/Logo/SymfonyLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <p>Symfony</p>
+                        <p>Assuré par Jeff Martins</p>
+                        <p>CTO chez MentalWorks</p>
+                        <p>
+                            <a href="{{path('projet_show', {'id': 8})}}">
+                                Visiter Projet
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>Novembre 2019</h2>
+                        <img src="{{asset('/images/Logo/BootstrapLogo.jpg')}}"
+                             class="logo" alt="Logo">
+                        <img src="{{asset('/images/Logo/JqueryLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <p>Bootstrap et JQuery</p>
+                        <p>Utilisé dans la majorité des projets</p>
+                        <p><a href="{{path('projet_show', {'id': 2})}}">Notamment</a></p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>Octobre 2019</h2>
+                        <img src="{{asset('/images/Logo/C.png')}}"
+                             class="logo" alt="Logo">
+                        <p>C#</p>
+                        <p><a href="{{path('projet_show', {'id': 7})}}">Visiter Projet</a></p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>Octobre 2019</h2>
+                        <p>Wordpress</p>
+                        <img src="{{asset('/images/Logo/WordpressLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <p>Assuré par Christopher Espargelière</p>
+                        <p>Chef de Projet chez MozArtsduWeb</p>
+                    </div>
+                </div>
+                <div class="container left">
+                    <div class="content">
+                        <h2>Septembre 2019</h2>
+                        <img src="{{asset('/images/Logo/PhpLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <p>PHP</p>
+                        <p>En cours de Formation</p>
+                        <p>Assuré par Jeff Martins</p>
+                        <p>Chief Technical Officer chez MentalWorks</p>
+                        <p><a href="{{path('projet_show', {'id': 2})}}">Visiter Projet</a></p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>Septembre 2019</h2>
+                        <img src="{{asset('/images/Logo/HtmlLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <img src="{{asset('/images/Logo/CssLogo.png')}}"
+                             class="logo" alt="Logo">
+                        <p>HTML/CSS</p>
+                        <p>En cours de Formation</p>
+                        <p>Utilisés dans tous les projets</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="education">
+            <h3>Ma Formation</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="education-block">
+                            <h5>2016 - 2019</h5>
+                            <span> <i class="fas fa-graduation-cap"></i></span>
+                            <a href="https://www.saint-dominique-mortefontaine-60.fr/" target="_blank"><h3>Institut Saint Dominique, Mortefontaine</h3></a>
+                            <h4>Baccalauréat ES</h4>
+                            <div class="red-divider"></div>
+                            <p>Spécialité économie approfondie</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="education-block">
+                            <h5>2019 - 2021</h5>
+                            <span> <i class="fas fa-graduation-cap"></i></span>
+                            <a href="https://www.lycee-stvincent.fr/" target="_blank"><h3>Lycée Saint Vincent, Senlis</h3></a>
+                            <h4>BTS Service informatique au Organisation</h4>
+                            <div class="red-divider"></div>
+                            <p>HTML/CSS, PHP, JQuery, Bootstrap, C# et Symfony</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="education-block">
+                            <h5>2021 - 2022</h5>
+                            <span> <i class="fas fa-graduation-cap"></i></span>
+                            <a href="https://www.lycee-stvincent.fr/" target="_blank"><h3>Lycée Saint Vincent, Senlis</h3></a>
+                            <h4>Licence générale informatique mention Développement Web</h4>
+                            <div class="red-divider"></div>
+                            <p>Symfony, Gestion de project, UX/UI et React</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="compétences">
+            <h3>Mes compétences</h3>
+            <section id="langages">
+                <h4>Langages de programmation</h4>
+                <div>
+                    <ol>
+                        <li>
+                            <a href="https://fr.wikipedia.org/
+							wiki/Hypertext_Markup_Language" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/HtmlLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fr.wikipedia.org/
+							wiki/Feuilles_de_style_en_cascade" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/CssLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fr.wikipedia.org/wiki/PHP" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/PhpLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fr.wikipedia.org/wiki/C_sharp" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/C.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            <section id="frameworks">
+                <h4>Frameworks et Librairies</h4>
+                <div>
+                    <ol>
+                        <li>
+                            <a href="https://symfony.com/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/SymfonyLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://getbootstrap.com/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/BootstrapLogo.jpg')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://jquery.com/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/JqueryLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fr.reactjs.org/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/React.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+            <section id="outils">
+                <h4>Outils</h4>
+                <div>
+                    <ol>
+                        <li>
+                            <a href="https://fr.wordpress.com/" target="_blank">
+                                <img src="{{asset('/images/Logo/WordpressLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://slack.com/intl/fr-fr/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/SlackLogo.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/" target="_blank">
+                                <img src="{{asset('/images/
+								Logo/Git.png')}}" class="logo" alt="Logo">
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </section>
+        <section id="contact">
+            <h3>Contact</h3>
+            {% for message in app.flashes('SuccessContact') %}
+                <div class="flash-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="container">
+                {{ include('contact/_form.html.twig') }}
+            </div>
+        </section>
+    </main>
+{% endblock %}

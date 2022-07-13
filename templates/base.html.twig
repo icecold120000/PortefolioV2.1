@@ -1,19 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}{% endblock %} - Quentin Pham</title>
+        <meta name="viewport" content="width= device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{asset('favicon_io/apple-touch-icon.png')}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{asset('favicon_io/favicon-32x32.png')}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicon_io/favicon-16x16.png')}}">
+        <link rel="manifest" href="{{asset('favicon_io/site.webmanifest')}}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/b33430525b.js" crossorigin="anonymous"></script>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Quentin Pham</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a href="{{ path('homepage') }}" class="nav-link" >Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#realisations" class="nav-link">Réalisation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#education" class="nav-link">Formation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#parcours" class="nav-link">Parcours</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#compétences" class="nav-link">Compétences</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{path('admin_index')}}">Administration</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                                <a href="{{ path('app_logout') }}" class="btn btn-danger">
+                                    Se déconnecter
+                                </a>
+                            {% else %}
+                                <a href="{{ path('app_login')}}" class="btn btn-danger">
+                                    Se connecter
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         {% block body %}{% endblock %}
     </body>
+    <footer>
+        <div>
+            <span>
+                <span class="icon"><i class="fas fa-phone-square"></i></span> +33 6 38 04 28 01
+            </span>
+        </div>
+        <div>
+            <a href="mailto:quentin.pham@lyceestvincent.fr"><span><span class="icon"><i class="far fa-envelope"></i></span> quentin.pham@lyceestvincent.fr</span></a>
+        </div>
+        <div>
+            <span class="icon"><i class="fas fa-home"></i></span><span> 59 Avenue De Viarmes 60270 Gouvieux FRANCE</span>
+        </div>
+        <div>
+            <span class="icon"><i class="fab fa-linkedin-in"></i></span><span><a href="https://www.linkedin.com/in/quentin-pham-ngoc-lan-b378911ba/"> Mon LinkedIn</a></span>
+        </div>
+        <div>
+            <span class="icon"><i class="fab fa-github"></i></span><span><a href="https://github.com/icecold120000"> Mon Github</a></span>
+        </div>
+        {% block footer %}{% endblock %}
+    </footer>
 </html>

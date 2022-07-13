@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une image projet{% endblock %}
+
+{% block body %}
+    <h1>Modifier une image projet</h1>
+
+    <div id="formProjet">
+        {{ include('imgProject/_form.html.twig')}}
+    </div>
+
+    <div>
+        <a href="{{ path('imgProjet_index') }}">
+            <button class="btn btn-secondary" id="btnRetour">
+                Revenir dans la liste
+            </button>
+        </a>
+    </div>
+
+{% endblock %}

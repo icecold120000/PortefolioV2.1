@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+    <h1 class="title">Connectez-vous</h1>
+
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form id="formConnexion" action="
+        {{ path('app_login') }}" method="POST">
+        <label class="labels" id="lblEmail">Nom d'utilisateur</label>
+        <div>
+            <input type="text" name=
+            "username" class="form-control">
+        </div>
+        {% if error %}
+            <div class="erreur">Saisie incorrecte. Veuillez resaisir votre nom d'utilisateur valide</div>
+        {% endif %}
+        <label class="labels">
+            Mot de passe</label>
+        <div>
+            <input type="password" name=
+            "password" class="form-control">
+        </div>
+        {% if error %}
+            <div class="erreur">Saisie incorrecte. Veuillez resaisir votre mot de passe valide</div>
+        {% endif %}
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}">
+        <div>
+            <button type="submit"
+                    class="btn btn-success" id="btnConnexion">
+                Se connecter</button>
+        </div>
+    </form>
+{% endblock %}

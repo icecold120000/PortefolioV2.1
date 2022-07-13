@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des messages{% endblock %}
+
+{% block body %}
+    <h1>Liste des messages</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Le nom</th>
+            <th>L'émail</th>
+            <th>Le message</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.nomContact }}</td>
+                <td>{{ contact.emailContact }}</td>
+                <td>{{ contact.messageContact }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun message reçu</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

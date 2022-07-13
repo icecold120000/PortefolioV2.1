@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie des images de projet{% endblock %}
+
+{% block body %}
+    <h1>Galerie des images de projet</h1>
+
+    <div>
+        <a href="{{ path('admin_index') }}">
+            <button class="btn btn-secondary" id="btnRetour">
+                Revenir dans la liste
+            </button>
+        </a>
+        <a href="{{ path('imgProjet_new') }}">
+            <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter une image</button>
+        </a>
+    </div>
+    <div>
+        {{ knp_pagination_render(imgsProjet) }}
+    </div>
+    <table class="table" id="tabProjet">
+        <thead>
+        <tr>
+            <th>Image du projet</th>
+            <th>Nom du projet</th>
+            <th>Éditer</th>
+            <th>Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for image_projet in imgsProjet %}
+            <tr>
+                <td><img src="{{ asset('uploads/ImgProjet/' ~ image_projet.lienProjet) }}" alt="Image projet"> </td>
+                <td> {{image_projet.projet.nomProjet}}</td>
+                <td>
+                    <a href="{{ path('imgProjet_edit', {'id': image_projet.id}) }}">
+                        <button class="btn btn-primary">
+                            <i class="far fa-edit"></i>
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('imgProjet_delete_view',
+                        {'id': image_projet.id}) }}">
+                        <button class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucune image trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        {{ knp_pagination_render(imgsProjet) }}
+    </div>
+{% endblock %}
+

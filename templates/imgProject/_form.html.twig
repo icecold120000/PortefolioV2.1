@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+    <div>
+        {{form_label(form.image)}}
+    </div>
+    <div id="divInput">
+        {{form_widget(form.image)}}
+    </div>
+    <div class="erreur">
+        {{form_errors(form.image)}}
+    </div>
+    <div>
+        {{form_label(form.projet)}}
+    </div>
+    <div id="divInput">
+        {{form_widget(form.projet)}}
+    </div>
+    <div class="erreur">
+        {{form_errors(form.projet)}}
+    </div>
+    <div>
+        <div id="divAjout" class="form-actions">
+            <button type="submit" class="btn btn-success">
+                Enregistrer le projet
+            </button>
+        </div>
+    </div>
+{{ form_end(form) }}
